@@ -1,0 +1,39 @@
+# Shared E+W protocol. Select a dataset/model preset instead of running this file.
+schema_version: 1
+run:
+  seed: 123
+  device: auto
+data:
+  cutoff: 5.0
+  energy_key: energy_per_atom
+  virial_key: stress_per_atom
+  virial_unit: GPa*A^3
+  mask_key: representative_mask
+  pbc: null  # Respect each structure; use [true, true, true] for legacy loader behavior.
+split:
+  num_train: 3200
+  num_val: 400
+  seed: 123  # Fixed independently from run.seed.
+model:
+  parameters:
+    hidden_channels: 128
+    num_layers: 3
+    num_rbf: 64
+training:
+  epochs: 1000
+  batch_size: 8
+  val_batch_size: 16
+  num_workers: 0
+  learning_rate: 1.0e-4
+  weight_decay: 1.0e-8
+  amsgrad: true
+  energy_weight: 1.0
+  virial_weight: 100.0
+  huber_delta: 0.01
+  gradient_clip: 10.0
+  patience: 0
+  min_delta: 0.0
+  scheduler:
+    period: 10
+    multiplier: 1
+    eta_min: 1.0e-6

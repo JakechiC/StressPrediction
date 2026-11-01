@@ -1,0 +1,14 @@
+# Portable configuration example; not a certified historical run record.
+extends: base.yaml
+run:
+  output_dir: ../runs/painn_derivative_ar
+data:
+  path: ../data/Ar_LJ.xyz
+split:
+  path: ../splits/Ar_LJ.npz
+model:
+  name: PaiNNDerivative
+  parameters:
+    num_elements: 86
+training:
+  epochs: 1000

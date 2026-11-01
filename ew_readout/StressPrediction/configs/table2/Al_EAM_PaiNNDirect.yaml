@@ -1,0 +1,54 @@
+# Copied scientific settings from the completed Table 2 collector record.
+# Portable path placeholders; seed 123 default, repeat with --seed 124 and 125.
+# New common-500 experiment, not a historical replay.
+data:
+  cutoff: 5.0
+  energy_key: energy_per_atom
+  mask_key: representative_mask
+  path: ${STRESS_DATA_ROOT}/Al_EAM.xyz
+  pbc:
+  - true
+  - true
+  - true
+  virial_key: stress_per_atom
+  virial_unit: GPa*A^3
+model:
+  parameters:
+    envelope:
+      exponent: 5
+      name: polynomial
+    hidden_channels: 128
+    num_elements: 86
+    num_layers: 3
+    num_rbf: 64
+    rbf:
+      name: gaussian
+  name: PaiNNDirect
+run:
+  device: cuda:0
+  seed: 123
+  output_dir: ${STRESS_OUTPUT_ROOT}/Al_EAM_PaiNNDirect_seed123
+schema_version: 1
+split:
+  num_train: 3200
+  num_val: 400
+  path: ${STRESS_SPLIT_ROOT}/Al_EAM.npz
+  seed: 123
+training:
+  amsgrad: true
+  batch_size: 8
+  energy_weight: 1.0
+  gradient_clip: 10.0
+  huber_delta: 0.01
+  learning_rate: 0.0001
+  min_delta: 0.0
+  num_workers: 4
+  patience: 0
+  scheduler:
+    eta_min: 1.0e-06
+    multiplier: 1
+    period: 10
+  val_batch_size: 16
+  virial_weight: 100.0
+  weight_decay: 1.0e-08
+  epochs: 500

@@ -1,0 +1,14 @@
+# Portable configuration example; not a certified historical run record.
+extends: base.yaml
+run:
+  output_dir: ../runs/tensornet_derivative_sic
+data:
+  path: ../data/SiC_Tersoff.xyz
+split:
+  path: ../splits/SiC_Tersoff.npz
+model:
+  name: TensorNetDerivative
+  parameters:
+    max_z: 86
+training:
+  epochs: 500

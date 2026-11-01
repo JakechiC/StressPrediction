@@ -1,0 +1,14 @@
+# Portable configuration example; not a certified historical run record.
+extends: base.yaml
+run:
+  output_dir: ../runs/painn_direct_al
+data:
+  path: ../data/Al_EAM.xyz
+split:
+  path: ../splits/Al_EAM.npz
+model:
+  name: PaiNNDirect
+  parameters:
+    num_elements: 86
+training:
+  epochs: 1000

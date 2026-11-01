@@ -1,0 +1,57 @@
+# Source-code example, NOT a configuration claiming to reproduce manuscript metrics.
+# All paths resolve relative to THIS file. Supply your own trained model.
+schema_version: 1
+provenance: source-code-example-with-corrected-units-and-hotspot-definition
+model:
+  checkpoint: ../checkpoints/graphene_surrogate.pt
+  device: cpu
+  allow_legacy_pickle: false
+environment:
+  geometry:
+    orientation: armchair
+    bond_length: 1.42
+    n_armchair: 1
+    n_zigzag: 2
+    n_x_grid: 5
+    n_y_grid: 5
+    buffer_cells: 2
+    vacuum: 20.0
+  rotations: 8
+  vacancies: 9
+  top_k_atoms: 100
+  reward:
+    # The inspected source compared its internal eV score to the number 20.
+    # This is NOT 20 GPa*A^3. Change value/unit explicitly for your experiment.
+    threshold:
+      value: 20.0
+      unit: eV
+    scale: 1.0
+agent:
+  hidden_channels: 128
+  hidden_layers: 3
+  gamma: 0.99
+  learning_rate: 0.0001
+  batch_size: 64
+  buffer_capacity: 100000
+  epsilon_start: 1.0
+  epsilon_end: 0.01
+  epsilon_decay: 50000
+  target_update_frequency: 1000
+  learning_starts: 1000
+training:
+  episodes: 1000
+  seed: 42
+  checkpoint_interval: 100
+  output_dir: ../runs/graphene/train
+evaluation:
+  policy_checkpoint: ../runs/graphene/train/policy_best.pt
+  episodes: 100
+  temperature: 1.0
+  deduplicate: true
+  max_attempts: 10000
+  seed: 43
+  output_dir: ../runs/graphene/evaluate
+random:
+  episodes: 500
+  seed: 44
+  output_dir: ../runs/graphene/random

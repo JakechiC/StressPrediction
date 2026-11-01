@@ -1,0 +1,14 @@
+# Portable configuration example; not a certified historical run record.
+extends: base.yaml
+run:
+  output_dir: ../runs/painn_derivative_graphene
+data:
+  path: ../data/Graphene_Airebo.xyz
+split:
+  path: ../splits/Graphene_Airebo.npz
+model:
+  name: PaiNNDerivative
+  parameters:
+    num_elements: 86
+training:
+  epochs: 500
