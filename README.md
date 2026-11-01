@@ -11,6 +11,6 @@ Use separate virtual environments because both subprojects use the same Python p
 
 The release scope excludes plotting, offline metric analysis, result aggregation, AIREBO candidate verification, and historical result archives. Training retains the weighted validation loss needed for checkpoint selection. Graphene hotspot scoring remains part of the policy's reward and candidate generation. No `docs` directory is included.
 
-Raw datasets, split arrays and trained weights are external inputs. Configuration examples are not certified historical run records. This source release does not reproduce or certify historical manuscript figures or resolve their outstanding source/metric/unit correspondence.
+Raw datasets, split arrays and trained weights are external inputs; see the Data availability statement of the paper. Each subproject provides example configurations; set data paths, checkpoints and run-specific settings for your own experiments.
 
 Author-controlled contributions are licensed under MIT, copyright (c) 2026 JIAN CHANG. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for retained upstream notices.

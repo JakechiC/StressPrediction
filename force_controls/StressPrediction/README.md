@@ -27,7 +27,7 @@ stress-prediction graphene evaluate --config configs/graphene_design.yaml
 stress-prediction graphene random --config configs/graphene_design.yaml
 ```
 
-Supply an explicit surrogate checkpoint. The `evaluate` command here generates candidate structures; it performs no AIREBO comparison. The reward uses full-matrix virial norms and requires an explicit threshold unit. Candidate files retain structures, raw tensors and generation metadata. The example uses `20 eV`; this is not numerically equivalent to `20 GPa*A^3` and is not certification of a historical manuscript threshold.
+Supply an explicit surrogate checkpoint. The `evaluate` command here generates candidate structures; it performs no AIREBO comparison. The reward uses full-matrix virial norms and requires an explicit threshold unit. Candidate files retain structures, raw tensors and generation metadata. The example uses `20 eV`; this is not numerically equivalent to `20 GPa*A^3`.
 
 SOAP/FPS input preprocessing remains available through `stress-prediction select --help`; install optional dependencies with `python -m pip install -e ".[selection]"`.
 
@@ -41,4 +41,4 @@ train(config)
 
 The force configuration must include `force_weight`, `force_length_A`, `force_key`, and `force_unit` under `force`, and use PaiNNDerivative or TensorNetDerivative. The ordinary `train` CLI remains the E+W route. A force-field entry does not switch that CLI into force training.
 
-Datasets, trained weights, paper figures and offline analysis scripts are not bundled. Example configurations require external data and do not certify historical figures. The root MIT license and third-party notices apply to this subproject.
+Datasets, trained weights, paper figures and offline analysis scripts are not bundled. Example configurations require external data. The root MIT license and third-party notices apply to this subproject.
