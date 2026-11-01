@@ -27,7 +27,7 @@ stress-prediction graphene evaluate --config configs/graphene_design.yaml
 stress-prediction graphene random --config configs/graphene_design.yaml
 ```
 
-Supply an explicit surrogate checkpoint. The `evaluate` command here generates candidate structures; it performs no AIREBO comparison. The reward uses full-matrix virial norms and requires an explicit threshold unit. Candidate files retain structures, raw tensors and generation metadata. The example uses `20 eV`; this is not numerically equivalent to `20 GPa*A^3`.
+Supply an explicit surrogate checkpoint. The `evaluate` command here generates candidate structures; it performs no AIREBO comparison. The reward uses full-matrix virial norms and requires an explicit threshold unit. Candidate files retain structures, raw tensors and generation metadata. The example uses `20 GPa*A^3`, as in the paper.
 
 SOAP/FPS input preprocessing remains available through `stress-prediction select --help`; install optional dependencies with `python -m pip install -e ".[selection]"`.
 

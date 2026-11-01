@@ -20,11 +20,9 @@ environment:
   vacancies: 9
   top_k_atoms: 100
   reward:
-    # The inspected source compared its internal eV score to the number 20.
-    # This is NOT 20 GPa*A^3. Change value/unit explicitly for your experiment.
     threshold:
       value: 20.0
-      unit: eV
+      unit: GPa*A^3
     scale: 1.0
 agent:
   hidden_channels: 128
